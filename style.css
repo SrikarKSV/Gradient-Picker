@@ -1,0 +1,133 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: linear-gradient(255.93deg, #a3f9ff 0%, rgba(175, 5, 255, 0.5) 100%);
+	font-family: 'Poppins', sans-serif;
+}
+
+/*************************************************** Header ******************************************************/
+header {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0.5rem;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	font-size: 2rem;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	padding: 1.3rem 3rem;
+	color: #ffffff;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.view-palette {
+	list-style: none;
+	font-size: 1.3rem;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	padding: 1rem;
+	margin-right: 3rem;
+	color: #0c4bc6;
+	cursor: pointer;
+}
+
+/*************************************************** End Header ******************************************************/
+
+/*************************************************** Control buttons ******************************************************/
+.control-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: sticky;
+	top: 1rem;
+	margin: 2rem 0;
+}
+
+#save,
+#generate {
+	font-family: 'Poppins', sans-serif;
+	border: none;
+	font-size: 0.9rem;
+	background: rgb(248, 245, 245);
+	width: 6.5rem;
+	height: 2.8rem;
+	cursor: pointer;
+}
+
+#save:focus,
+#generate:focus {
+	outline: none;
+}
+
+#save {
+	border-top-right-radius: 0.8rem;
+	border-bottom-right-radius: 0.8rem;
+}
+#generate {
+	border-right: 2px solid #67b9d2;
+	border-top-left-radius: 0.8rem;
+	border-bottom-left-radius: 0.8rem;
+}
+
+/*************************************************** End Control buttons ******************************************************/
+.palette-container {
+	background: #ffffff;
+	border-radius: 10px;
+	padding: 1px;
+}
+
+.palette-container p {
+	text-align: center;
+	margin: 2rem;
+	cursor: pointer;
+}
+
+.palette {
+	margin: 2rem auto;
+	max-width: 60%;
+	height: 20rem;
+	background: linear-gradient(270deg, rgba(60, 242, 209, 0.8) 0%, rgba(13, 223, 97, 0.47) 100%);
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+hr {
+	width: 5%;
+	margin: auto;
+	height: 0;
+	border-style: dotted;
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+	border-width: 0.3rem;
+}
+
+/************************************************ Footer ****************************************************/
+footer p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+footer {
+	background-color: black;
+	color: white;
+	margin: 3rem 0 0 0;
+	height: 2rem;
+	padding: 2rem 0 3rem 0;
+}
+
+/************************************************ End Footer ****************************************************/
