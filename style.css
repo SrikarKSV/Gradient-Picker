@@ -275,6 +275,10 @@ input[type="color"] {
 	transform: translateY(0rem);
 }
 
+.library-h4 {
+	margin-top: 2rem;
+}
+
 /* The Save block */
 .save-name {
 	margin: 1rem auto;
@@ -337,11 +341,13 @@ input[type="color"] {
 	border-radius: 15px;
 	cursor: pointer;
 	margin-left: 1rem;
+	transition: all 0.3s ease;
 }
 
 .pick-palette-btn:hover {
 	color: rgb(0, 0, 0);
 	background-color: white;
+	border: 1px solid;
 }
 
 .pick-palette-btn:focus {
