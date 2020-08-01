@@ -6,6 +6,8 @@ const exitPickers = document.querySelectorAll('.exit-picker');
 const gradientText = document.querySelectorAll('.gradient-text');
 const generateBtn = document.querySelector('#generate');
 const colorInputs = document.querySelectorAll('.color-input');
+const popup = document.querySelector('.copy-container');
+const locks = document.querySelectorAll('.lock');
 
 // Event Listeners
 
@@ -40,6 +42,23 @@ colorInputs.forEach((colorInput) => {
 	colorInput.addEventListener('input', backgroundGenerator);
 });
 
+// Copying the background gradient from clipboard
+gradientText.forEach((text) => {
+	text.addEventListener('click', copyToClipboard);
+});
+
+// To end the transition of popup
+popup.addEventListener('transitionend', () => {
+	const popBox = popup.children[0];
+	popBox.classList.remove('active');
+	popup.classList.remove('active');
+});
+
+// Lock button
+locks.forEach((lock) => {
+	lock.addEventListener('click', lockPalette);
+});
+
 // Functions
 
 // Generate hex colors
@@ -55,21 +74,24 @@ function generateHex() {
 // Adding gradient to palettes
 function insertRandomColors() {
 	palettes.forEach((palette, index) => {
-		// Generating random colors
-		const leftGradient = generateHex();
-		const rightGradient = generateHex();
-		// Adding the colors to the palette
-		palette.style.background = `linear-gradient(to right, ${leftGradient}, ${rightGradient})`;
-		// Setting the attributes of pallete to their color to use for the color input
-		// palette.setAttribute('left-gradient', leftGradient);
-		// palette.setAttribute('right-gradient', rightGradient);
-		// Changing the text
-		gradientText[index].innerText = `linear-gradient(to right, ${leftGradient}, ${rightGradient})`;
-		// Setting the value of color input to the colors
-		const colorInput1 = palette.children[1].children[1];
-		const colorInput2 = palette.children[1].children[2];
-		colorInput1.value = leftGradient;
-		colorInput2.value = rightGradient;
+		// If the palette has a class locked then the background won't change
+		if (!palette.classList.contains('locked')) {
+			// Generating random colors
+			const leftGradient = generateHex();
+			const rightGradient = generateHex();
+			// Adding the colors to the palette
+			palette.style.background = `linear-gradient(to right, ${leftGradient}, ${rightGradient})`;
+			// Setting the attributes of pallete to their color to use for the color input
+			// palette.setAttribute('left-gradient', leftGradient);
+			// palette.setAttribute('right-gradient', rightGradient);
+			// Changing the text
+			gradientText[index].innerText = `linear-gradient(to right, ${leftGradient}, ${rightGradient})`;
+			// Setting the value of color input to the colors
+			const colorInput1 = palette.children[1].children[1];
+			const colorInput2 = palette.children[1].children[2];
+			colorInput1.value = leftGradient;
+			colorInput2.value = rightGradient;
+		}
 	});
 }
 
@@ -77,7 +99,6 @@ function insertRandomColors() {
 function backgroundGenerator() {
 	// Will get the palette div
 	const paletteChildren = this.parentElement.children;
-	console.log(this.parentElement.parentElement);
 	// If the id of the color input is even the it's left color input
 	if (this.getAttribute('id') % 2 === 0) {
 		const rightColorValue = paletteChildren[2].value;
@@ -105,6 +126,34 @@ function backgroundGenerator() {
 	}
 }
 
+// Copying to the clip board
+function copyToClipboard() {
+	// Creatng a temporary textarea for the text to be inserted
+	const el = document.createElement('textarea');
+	el.value = this.innerText;
+	document.body.appendChild(el);
+	el.select();
+	// Text is copied
+	document.execCommand('copy');
+	// The element is destroyed
+	document.body.removeChild(el);
+	// Pop up animation
+	const popBox = popup.children[0];
+	popup.classList.add('active');
+	popBox.classList.add('active');
+}
+
+// Locking the palette
+function lockPalette() {
+	this.parentElement.classList.toggle('locked');
+	if (this.children[0].classList.contains('fa-lock-open')) {
+		this.innerHTML = '<i class="fas fa-lock"></i>';
+	} else {
+		this.innerHTML = '<i class="fas fa-lock-open"></i>';
+	}
+}
+
+// ******************************************************Responsible for the animation of edit and color picker button
 // This to invoke the color picker up and down
 function paletteShowPicker() {
 	const colorPickerBtn = this.parentElement.children[1];

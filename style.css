@@ -51,6 +51,12 @@ h1 a {
 /*************************************************** End Header ******************************************************/
 
 /*************************************************** Control buttons ******************************************************/
+
+i,
+svg {
+	pointer-events: none;
+}
+
 .control-button {
 	display: flex;
 	justify-content: center;
@@ -97,11 +103,10 @@ h1 a {
 .palette:first-child {
 	margin-top: 4rem;
 }
-.palette-container p {
+.palette-container .gradient-text {
 	text-align: center;
 	margin: 2rem auto;
 	cursor: pointer;
-	width: 40rem;
 }
 
 .palette {
@@ -182,6 +187,61 @@ input[type="color"] {
 	cursor: pointer;
 }
 
+/* The lock button */
+
+.lock {
+	position: absolute;
+	top: 1.5rem;
+	right: 1.5rem;
+	border: none;
+	background-color: rgba(0, 0, 0, 0);
+	font-size: 1.5rem;
+	color: white;
+	cursor: pointer;
+}
+
+.lock:focus {
+	outline: none;
+}
+
+/* The copy popup animation */
+.copy-container {
+	position: fixed;
+	top: 0%;
+	bottom: 0%;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.4s ease;
+}
+
+.copy-popup {
+	background-color: white;
+	min-width: 25rem;
+	min-height: 20vh;
+	border-radius: 2rem;
+	font-size: 1.3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform 0.4s ease;
+	transform: translateY(-2rem);
+}
+.copy-container.active {
+	opacity: 1;
+	pointer-events: all;
+}
+
+.copy-popup.active {
+	transform: translateY(0rem);
+}
+
+/* The horizontal line in the page */
 hr {
 	width: 5%;
 	margin: auto;
