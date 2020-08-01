@@ -5,7 +5,7 @@ const colorContainer = document.querySelectorAll('.color-container');
 const exitPickers = document.querySelectorAll('.exit-picker');
 const gradientText = document.querySelectorAll('.gradient-text');
 const generateBtn = document.querySelector('#generate');
-const colorInput = document.querySelectorAll('.color-input');
+const colorInputs = document.querySelectorAll('.color-input');
 
 // Event Listeners
 
@@ -35,6 +35,11 @@ colorContainer.forEach((colorInput) => {
 	});
 });
 
+// Changing background using color input
+colorInputs.forEach((colorInput) => {
+	colorInput.addEventListener('input', backgroundGenerator);
+});
+
 // Functions
 
 // Generate hex colors
@@ -50,10 +55,17 @@ function generateHex() {
 // Adding gradient to palettes
 function insertRandomColors() {
 	palettes.forEach((palette, index) => {
+		// Generating random colors
 		const leftGradient = generateHex();
 		const rightGradient = generateHex();
+		// Adding the colors to the palette
 		palette.style.background = `linear-gradient(to right, ${leftGradient}, ${rightGradient})`;
+		// Setting the attributes of pallete to their color to use for the color input
+		// palette.setAttribute('left-gradient', leftGradient);
+		// palette.setAttribute('right-gradient', rightGradient);
+		// Changing the text
 		gradientText[index].innerText = `linear-gradient(to right, ${leftGradient}, ${rightGradient})`;
+		// Setting the value of color input to the colors
 		const colorInput1 = palette.children[1].children[1];
 		const colorInput2 = palette.children[1].children[2];
 		colorInput1.value = leftGradient;
@@ -61,10 +73,44 @@ function insertRandomColors() {
 	});
 }
 
+// Changing background gradient with color input
+function backgroundGenerator() {
+	// Will get the palette div
+	const paletteChildren = this.parentElement.children;
+	console.log(this.parentElement.parentElement);
+	// If the id of the color input is even the it's left color input
+	if (this.getAttribute('id') % 2 === 0) {
+		const rightColorValue = paletteChildren[2].value;
+		this.parentElement.parentElement.style.background = `linear-gradient(to right, ${this
+			.value}, ${rightColorValue})`;
+		gradientText.forEach((text) => {
+			// If the gradient contains the same class as the name of the color input
+			if (text.classList.contains(this.name)) {
+				text.innerText = `linear-gradient(to right, ${this.value}, ${rightColorValue})`;
+			}
+		});
+		// this.parentElement.parentElement.setAttribute('left-gradient', this.value);
+	} else {
+		// Else it's right
+		const leftColorValue = paletteChildren[1].value;
+		this.parentElement.parentElement.style.background = `linear-gradient(to right, ${leftColorValue}, ${this
+			.value})`;
+		gradientText.forEach((text) => {
+			// If the gradient contains the same class as the name of the color input
+			if (text.classList.contains(this.name)) {
+				text.innerText = `linear-gradient(to right, ${leftColorValue}, ${this.value})`;
+			}
+		});
+		// this.parentElement.parentElement.setAttribute('right-gradient', this.value);
+	}
+}
+
 // This to invoke the color picker up and down
 function paletteShowPicker() {
 	const colorPickerBtn = this.parentElement.children[1];
+	// When the edit button is clicked then the color picker div will slide up
 	colorPickerBtn.classList.add('active');
+	// And if the color picker div has slided up then edit button will slide down
 	if (colorPickerBtn.classList.contains('active')) {
 		this.classList.remove('active');
 	}
@@ -72,6 +118,7 @@ function paletteShowPicker() {
 
 function removePaletteShowPicker() {
 	const colorPickerElement = this.parentElement;
+	// Checking if the div of the color picker has active class
 	if (colorPickerElement.classList.contains('active')) {
 		colorPickerElement.classList.remove('active');
 	}
@@ -81,12 +128,14 @@ function removePaletteShowPicker() {
 function editBtnSlideUp() {
 	const editButton = this.children[0];
 	const colorPickerBtn = this.children[1];
+	// If the div of the color picker doesn't have active class then the edit button will slide up
 	if (!colorPickerBtn.classList.contains('active')) {
 		editButton.classList.add('active');
 	}
 }
 
 function editBtnslideDown() {
+	// Will slide down when not hovered over
 	const editButton = this.children[0];
 	editButton.classList.remove('active');
 }
