@@ -1,6 +1,8 @@
 # Gradient Picker
 Create, save, comeback later! Generate your own gradient palettes and compare them.
 
+Check out the app yourself!: [Gradient picker](https://gradientspicker.netlify.app)
+
 ![Screen shot of the app](https://i.imgur.com/yDKoGfT.png)
 
 ## Functionalities
