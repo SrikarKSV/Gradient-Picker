@@ -66,12 +66,8 @@ locks.forEach((lock) => {
 
 // Generate hex colors
 function generateHex() {
-  const letters = "123456789abcdef";
-  let prefix = "#";
-  for (let i = 0; i < 6; i++) {
-    prefix += letters[Math.floor(Math.random() * 15)];
-  }
-  return prefix;
+  const color = randomColor();
+  return color;
 }
 
 // Adding gradient to palettes
