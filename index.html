@@ -1,100 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gradient Picker</title>
-        <link rel="stylesheet" href="./style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Picker</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
+</head>
 
-    <body>
-        <header>
-            <h1><a href="#">Gradient picker</a></h1>
-            <nav>
-                <ul>
-                    <li class="view-palette">view palettes</li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <div class="control-button">
-                <button id="generate">Generate</button>
-                <button id="save">Save</button>
-            </div>
-            <div class="palette-container">
-                <div class="palette p1">
-                    <button class="edit">Click to edit</button>
-                    <div class="color-container">
-                        <span class="exit-picker"><i class="fas fa-times"></i></span>
-                        <input type="color" name="first" class="color-input" id="0">
-                        <input type="color" name="first" class="color-input" id="1">
-                    </div>
-                    <button class="lock"><i class="fas fa-lock-open"></i></button>
-                </div>
-                <p class="gradient-text first"></p>
-                <hr>
-                <div class="palette p2">
-                    <button class="edit">Click to edit</button>
-                    <div class="color-container">
-                        <span class="exit-picker"><i class="fas fa-times"></i></span>
-                        <input type="color" name="second" class="color-input" id="2">
-                        <input type="color" name="second" class="color-input" id="3">
-                    </div>
-                    <button class="lock"><i class="fas fa-lock-open"></i></button>
-                </div>
-                <p class="gradient-text second"></p>
-                <hr>
-                <div class="palette p3">
-                    <button class="edit">Click to edit</button>
-                    <div class="color-container">
-                        <span class="exit-picker"><i class="fas fa-times"></i></span>
-                        <input type="color" name="third" class="color-input" id="4">
-                        <input type="color" name="third" class="color-input" id="5">
-                    </div>
-                    <button class="lock"><i class="fas fa-lock-open"></i></button>
-                </div>
-                <p class="gradient-text third"></p>
-                <hr>
-                <div class="palette p4">
-                    <button class="edit">Click to edit</button>
-                    <div class="color-container">
-                        <span class="exit-picker"><i class="fas fa-times"></i></span>
-                        <input type="color" name="fourth" class="color-input" id="6">
-                        <input type="color" name="fourth" class="color-input" id="7">
-                    </div>
-                    <button class="lock"><i class="fas fa-lock-open"></i></button>
-                </div>
-                <p class="gradient-text fourth"></p>
-            </div>
-        </main>
-        <div class="copy-container">
-            <div class="copy-popup">
-                <p>Copied to clipboard 👍</p>
-            </div>
+<body>
+  <header>
+    <h1><a href="#">Gradient picker</a></h1>
+    <nav>
+      <ul>
+        <li class="view-palette">view palettes</li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="control-button">
+      <button id="generate">Generate</button>
+      <button id="save">Save</button>
+    </div>
+    <div class="palette-container">
+      <div class="palette p1">
+        <button class="edit">Click to edit</button>
+        <div class="color-container">
+          <span class="exit-picker"><i class="fas fa-times"></i></span>
+          <input type="color" name="first" class="color-input" id="0">
+          <input type="color" name="first" class="color-input" id="1">
         </div>
-        <div class="save-container">
-            <div class="save-popup">
-                <button class="close-save"><i class="fas fa-times"></i></button>
-                <h4>Give a name to your pallete</h4>
-                <input type="text" max-length="35" class="save-name" />
-                <button type="submit" class="submit-save">Save</button>
-            </div>
+        <button class="lock"><i class="fas fa-lock-open"></i></button>
+      </div>
+      <p class="gradient-text first"></p>
+      <hr>
+      <div class="palette p2">
+        <button class="edit">Click to edit</button>
+        <div class="color-container">
+          <span class="exit-picker"><i class="fas fa-times"></i></span>
+          <input type="color" name="second" class="color-input" id="2">
+          <input type="color" name="second" class="color-input" id="3">
         </div>
-        <div class="library-container">
-            <div class="library-popup">
-                <button class="close-library"><i class="fas fa-times"></i></button>
-                <h4 class="library-h4">Pick your palette</h4>
-            </div>
+        <button class="lock"><i class="fas fa-lock-open"></i></button>
+      </div>
+      <p class="gradient-text second"></p>
+      <hr>
+      <div class="palette p3">
+        <button class="edit">Click to edit</button>
+        <div class="color-container">
+          <span class="exit-picker"><i class="fas fa-times"></i></span>
+          <input type="color" name="third" class="color-input" id="4">
+          <input type="color" name="third" class="color-input" id="5">
         </div>
-        <footer>
-            <p>Srikar&copy 2020</p>
-        </footer>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
-            integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
-            crossorigin="anonymous"></script>
-        <script src="./app.js"></script>
-    </body>
+        <button class="lock"><i class="fas fa-lock-open"></i></button>
+      </div>
+      <p class="gradient-text third"></p>
+      <hr>
+      <div class="palette p4">
+        <button class="edit">Click to edit</button>
+        <div class="color-container">
+          <span class="exit-picker"><i class="fas fa-times"></i></span>
+          <input type="color" name="fourth" class="color-input" id="6">
+          <input type="color" name="fourth" class="color-input" id="7">
+        </div>
+        <button class="lock"><i class="fas fa-lock-open"></i></button>
+      </div>
+      <p class="gradient-text fourth"></p>
+    </div>
+  </main>
+  <div class="copy-container">
+    <div class="copy-popup">
+      <p>Copied to clipboard 👍</p>
+    </div>
+  </div>
+  <div class="save-container">
+    <div class="save-popup">
+      <button class="close-save"><i class="fas fa-times"></i></button>
+      <h4>Give a name to your pallete</h4>
+      <input type="text" max-length="35" class="save-name" />
+      <button type="submit" class="submit-save">Save</button>
+    </div>
+  </div>
+  <div class="library-container">
+    <div class="library-popup">
+      <button class="close-library"><i class="fas fa-times"></i></button>
+      <h4 class="library-h4">Pick your palette</h4>
+    </div>
+  </div>
+  <footer>
+    <p>Srikar&copy 2020</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+    integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+    crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
+</body>
 
 </html>
